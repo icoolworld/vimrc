@@ -41,7 +41,7 @@ cd phpcd.vim/ && composer install && cd ../
 
 # python auto complete
 git clone --recursive https://github.com/deoplete-plugins/deoplete-jedi.git
-cd deoplete-jedi/ && git submodule update --init && cd../
+cd deoplete-jedi/ && git submodule update --init && cd ../
 
 # sql auto complete
 git clone --depth=1 https://github.com/jjohnson338/deoplete-mssql.git
