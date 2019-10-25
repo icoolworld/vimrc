@@ -66,6 +66,9 @@ function install_deoplete(){
 
 # for coc
 function install_coc() {
+    mkdir ~/.vim/
+    cp coc-settings.json ~/.vim/
+
     cd ~/.vim_runtime/my_plugins/
     curl --fail -L https://github.com/neoclide/coc.nvim/archive/release.tar.gz|tar xzfv -
 
@@ -73,7 +76,7 @@ function install_coc() {
     vim -c "CocInstall -sync coc-phpls coc-python coc-go coc-json coc-html coc-css coc-tsserver coc-vetur coc-yaml coc-docker coc-git coc-xml coc-highlight coc-snippets coc-lists coc-vimlsp coc-tabnine coc-marketplace coc-eslint coc-prettier coc-calc coc-stylelint coc-todolist coc-bookmark coc-webpack coc-ultisnips coc-sh coc-sql coc-lua coc-eomji coc-markdownlint coc-syntax coc-clock coc-ccls| q"
 }
 
-install_linter_formater
+# install_linter_formater
 # install_deoplete
 install_coc
 
