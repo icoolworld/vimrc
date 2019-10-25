@@ -8,7 +8,7 @@
  " =>ale checks
  """""""""""""""""""""""""""""""""""""
 
-" let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 1
 let g:ale_lint_on_enter = 1
 let g:ale_completion_tsserver_autoimport = 1
 let g:ale_sign_error = '>>'
