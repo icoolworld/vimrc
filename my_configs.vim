@@ -73,54 +73,54 @@ autocmd FileType php vnoremap <C-p> :call PhpDocRange()<CR>
 
  """""""""""""""""""""""""""""""""""""
  " => deoplete.nvim
- """""""""""""""""""""""""""""""""""""
-let g:deoplete#enable_at_startup = 1
+ """"""""""""""""""""""""""""""""""""""
+"let g:deoplete#enable_at_startup = 0
 
-" php auto complete
-" @see https://github.com/lvht/phpcd.vim
-let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
-let g:deoplete#ignore_sources.php = ['omni']
-"let g:phpcd_autoload_path = 'path/to/autoload_file.php'
-"let g:phpcd_php_cli_executable = 'php'
-
-
-" Javascript auto complete
-" @see https://github.com/carlitux/deoplete-ternjs
-let g:deoplete#sources#ternjs#filetypes = [
-\ 'js',
-\ 'jsx',
-\ 'vue'
-\ ]
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
+"" php auto complete
+"" @see https://github.com/lvht/phpcd.vim
+"let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
+"let g:deoplete#ignore_sources.php = ['omni']
+""let g:phpcd_autoload_path = 'path/to/autoload_file.php'
+""let g:phpcd_php_cli_executable = 'php'
 
 
-" go auto complete
-" @see https://github.com/deoplete-plugins/deoplete-go
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+"" Javascript auto complete
+"" @see https://github.com/carlitux/deoplete-ternjs
+"let g:deoplete#sources#ternjs#filetypes = [
+"\ 'js',
+"\ 'jsx',
+"\ 'vue'
+"\ ]
+"let g:tern#command = ["tern"]
+"let g:tern#arguments = ["--persistent"]
 
 
-" python auto complete
-" @see https://github.com/deoplete-plugins/deoplete-go
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
+"" go auto complete
+"" @see https://github.com/deoplete-plugins/deoplete-go
+"let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+"let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 
-" sql auto complete
-" @see https://github.com/jjohnson338/deoplete-mssql
-let g:deoplete#sources#mssql#server='mysql'
-let g:deoplete#sources#mssql#user='root'
-let g:deoplete#sources#mssql#password='123456'
-let g:deoplete#sources#mssql#db='mysql'
+"" python auto complete
+"" @see https://github.com/deoplete-plugins/deoplete-go
+"let g:python_host_prog = '/usr/bin/python'
+"let g:python3_host_prog = '/usr/bin/python3'
 
 
-" deoplete-tabnine
-call deoplete#custom#var('tabnine', {
-\ 'line_limit': 500,
-\ 'max_num_results': 20,
-\ })
+"" sql auto complete
+"" @see https://github.com/jjohnson338/deoplete-mssql
+"let g:deoplete#sources#mssql#server='mysql'
+"let g:deoplete#sources#mssql#user='root'
+"let g:deoplete#sources#mssql#password='123456'
+"let g:deoplete#sources#mssql#db='mysql'
 
-" deoplete-emoji
-call deoplete#custom#source('emoji', 'filetypes', ['php', 'markdown', 'text', 'html'])
-call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
+
+"" deoplete-tabnine
+"call deoplete#custom#var('tabnine', {
+"\ 'line_limit': 500,
+"\ 'max_num_results': 20,
+"\ })
+
+"" deoplete-emoji
+"call deoplete#custom#source('emoji', 'filetypes', ['php', 'markdown', 'text', 'html'])
+"call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
