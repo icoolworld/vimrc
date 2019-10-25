@@ -1,3 +1,6 @@
 {
-  "coc.preferences.diagnostic.displayByAle": true
+  "phpls.enable": true,
+  "python.linting.enabled": false,
+  "python.sortImports.args": ["-rc"],
+  "python.sortImports.path": "/usr/bin/isort"
 }
