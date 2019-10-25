@@ -76,8 +76,13 @@ function install_coc() {
     vim -c "CocInstall -sync coc-phpls coc-python coc-go coc-json coc-html coc-css coc-tsserver coc-vetur coc-yaml coc-docker coc-git coc-xml coc-highlight coc-snippets coc-lists coc-vimlsp coc-tabnine coc-marketplace coc-eslint coc-prettier coc-calc coc-stylelint coc-todolist coc-bookmark coc-webpack coc-ultisnips coc-sh coc-sql coc-lua coc-eomji coc-markdownlint coc-syntax coc-clock coc-ccls| q"
 }
 
-# install_linter_formater
+function install_vim_go() {
+    vim -c "GoInstallBinaries"
+}
+
+install_linter_formater
 # install_deoplete
 install_coc
+install_vim_go
 
 echo "Installed the Custom Vim configuration successfully! Enjoy :-)"
