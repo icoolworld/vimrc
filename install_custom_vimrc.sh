@@ -1,6 +1,7 @@
 #!/bin/sh
 
 set -e
+cd ~/.vim_runtime/
 
 # for ale
 function install_linter_formater(){
@@ -66,7 +67,7 @@ function install_deoplete(){
 
 # for coc
 function install_coc() {
-    mkdir ~/.vim/
+    mkdir -p ~/.vim/
     cp coc-settings.json ~/.vim/
 
     cd ~/.vim_runtime/my_plugins/
