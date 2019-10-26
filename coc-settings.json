@@ -1,6 +1,18 @@
 {
+  "coc.preferences.diagnostic.displayByAle": true,
   "phpls.enable": true,
   "python.linting.enabled": false,
-  "python.sortImports.args": ["-rc"],
-  "python.sortImports.path": "/usr/bin/isort"
+  "python.sortImports.args": ["-rc --multi-line=3 --trailing-comma"],
+  "python.sortImports.path": "isort",
+  "go.enable": true,
+  "html.enable": true,
+  "html.format.enable": true,
+  "html.filetypes": ["html", "htm", "handlebars"],
+  "css.filetypes": ["css", "less", "wxss", "scss"],
+  "css.validate": true,
+  "less.validate": true,
+  "wxss.validate": true,
+  "scss.validate": true,
+  "tsserver.enable": true,
+  "tsserver.log": "verbose"
 }
