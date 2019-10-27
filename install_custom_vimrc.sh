@@ -202,6 +202,12 @@ function install_coc() {
     # with Tsserver language server
     vim -c "CocInstall -sync coc-tsserver | q"
 
+    # jest
+    # @see https://jestjs.io/
+    yarn global add jest
+    vim -c "CocInstall -sync coc-snippets | q"
+    vim -c "CocInstall -sync https://github.com/andys8/vscode-jest-snippets | q"
+
     # vue
     # with vue-language-server
     npm install vue-language-server -g
