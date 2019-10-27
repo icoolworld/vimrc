@@ -73,7 +73,8 @@ let g:ale_fixers = {
 \   'markdown': ['prettier'],
 \   'yaml': ['prettier'],
 \   'xml': ['xmllint'],
-\   'sql': ['sqlformat']
+\   'sql': ['sqlformat'],
+\   'sh': ['shfmt']
 \}
 
 set tags=tags;,ctags;,.tags;,.ctags

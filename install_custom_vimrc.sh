@@ -4,14 +4,14 @@ set -e
 cd ~/.vim_runtime/
 
 # for ale
-function install_linter_formater(){
+function install_linter_formater() {
 
     ###### for python #######
 
     # python linter
     pip3 install pylint --upgrade
     #@see https://gitlab.com/pycqa/flake8
-    pip3 install flake8  --upgrade
+    pip3 install flake8 --upgrade
     # python linter for style checking
     pip3 install pycodestyle --upgrade
 
@@ -21,7 +21,6 @@ function install_linter_formater(){
     pip3 install isort -U
     pip3 install yapf -U
     pip3 install autopep8 -U
-
 
     ###### for golang #######
 
@@ -33,7 +32,6 @@ function install_linter_formater(){
     # golang formating
     # gofmt
     # goimports
-
 
     ###### for java #######
     # java linter
@@ -71,13 +69,11 @@ function install_linter_formater(){
     npm install -g prettier-eslint
     yarn global add prettier-eslint-cli
 
-
     ###### for yaml #######
     # yaml linter
     pip install yamllint
     # yaml formating
     # use prettier
-
 
     ###### for vue #######
     # vue linter
@@ -94,7 +90,6 @@ function install_linter_formater(){
     ###### for dockerfile #######
     # dockerfile linter
     npm i -g dockerfile-linter
-
 
     ###### for vim #######
     # vim linter
@@ -115,17 +110,22 @@ function install_linter_formater(){
     # sql formating
     pip3 install sqlformat
 
+    ###### for sh/bash/mksh #######
+    # sh/bash/mksh formating
+    GO111MODULE=on cd $(mktemp -d)
+    go mod init tmp
+    go get mvdan.cc/sh/cmd/shfmt
+
 }
 
 # for deoplete
-function install_deoplete(){
+function install_deoplete() {
     cd ~/.vim_runtime/my_plugins/
     # for vim auto complete
     pip3 install pynvim
     git clone --depth=1 https://github.com/Shougo/deoplete.nvim.git
     git clone --depth=1 https://github.com/roxma/nvim-yarp.git
     git clone --depth=1 https://github.com/roxma/vim-hug-neovim-rpc.git
-
 
     # javascript auto complete
     npm install -g tern
@@ -166,7 +166,7 @@ function install_coc() {
     cp coc-settings.json ~/.vim/
 
     cd ~/.vim_runtime/my_plugins/
-    curl --fail -L https://github.com/neoclide/coc.nvim/archive/release.tar.gz|tar xzfv -
+    curl --fail -L https://github.com/neoclide/coc.nvim/archive/release.tar.gz | tar xzfv -
 
     # install coc extensions , include language server support
 
@@ -180,12 +180,10 @@ function install_coc() {
     pip3 install 'python-language-server[all]' -U
     vim -c "CocInstall -sync coc-python | q"
 
-
     # golang
     # golang lsp
     GO111MODULE=on go get golang.org/x/tools/gopls@latest
     vim -c "CocInstall -sync coc-go | q"
-
 
     # java
     # java lsp
@@ -247,7 +245,6 @@ function install_coc() {
 
     # tabnine, not work
     # vim -c "CocInstall -sync coc-tabnine | q"
-
 
     # vim -c "CocInstall -sync coc-phpls coc-python coc-go coc-json coc-html coc-css coc-tsserver coc-vetur coc-yaml coc-docker coc-git coc-xml coc-highlight coc-snippets coc-lists coc-vimlsp coc-tabnine coc-marketplace coc-eslint coc-prettier coc-calc coc-stylelint coc-todolist coc-bookmark coc-webpack coc-ultisnips coc-sh coc-sql coc-lua coc-eomji coc-markdownlint coc-syntax coc-clock coc-ccls| q"
 }
