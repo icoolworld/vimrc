@@ -2,7 +2,7 @@
   "coc.preferences.diagnostic.displayByAle": true,
   "phpls.enable": true,
   "python.linting.enabled": false,
-  "python.sortImports.args": ["-rc --multi-line=3 --trailing-comma"],
+  "python.sortImports.args": ["-rc"],
   "python.sortImports.path": "isort",
   "go.enable": true,
   "html.enable": true,
