@@ -161,7 +161,7 @@ function install_coc() {
 }
 
 function install_vim_go() {
-    vim -c "GoInstallBinaries"
+    vim --not-a-term -c "GoInstallBinaries"
 }
 
 install_linter_formater
