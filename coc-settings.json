@@ -6,7 +6,7 @@
   "python.sortImports.path": "isort",
   "go.enable": true,
   "html.enable": true,
-  "html.format.enable": true,
+  "html.format.enable": false,
   "html.filetypes": ["html", "htm", "handlebars"],
   "css.filetypes": ["css", "less", "wxss", "scss"],
   "css.validate": true,
@@ -14,5 +14,30 @@
   "wxss.validate": true,
   "scss.validate": true,
   "tsserver.enable": true,
-  "tsserver.log": "verbose"
+  "tsserver.trace.server": "verbose",
+  "tsserver.log": "verbose",
+  "vetur.format.enable": false,
+  "yaml.schemas": {
+    "url": "*.yaml",
+    "Kubernetes": "*.yaml"
+  },
+  "yaml.validate": true,
+  "yaml.completion": true,
+  "json.enable": true,
+  "json.format.enable": false,
+  "docker.enable": true,
+  "languageserver": {
+    "efm": {
+      "command": "efm-langserver",
+      "args": ["-c", "~/.vim_runtime/efm-langserver-config.yaml"],
+      "filetypes": ["vim", "eruby", "markdown"]
+    },
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    }
+  },
+  "css.enable": true
 }

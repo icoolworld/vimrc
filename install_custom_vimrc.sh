@@ -61,16 +61,60 @@ function install_linter_formater(){
     npm install -g fecs
     # js import format
     npm install -g import-js
-    yarn global add prettier
 
+    # html,css, vue, markdown, js formating
+    yarn global add prettier
+    npm install @starptech/prettyhtml --global
+    npm -g install js-beautify
+
+    # for js formating
+    npm install -g prettier-eslint
+    yarn global add prettier-eslint-cli
+
+
+    ###### for yaml #######
+    # yaml linter
+    pip install yamllint
+    # yaml formating
+    # use prettier
+
+
+    ###### for vue #######
+    # vue linter
+    # use vls, tsserver
+    # vue formating
+    # use prettier
+
+    ###### for json #######
+    # vue linter
+    npm install -g jsonlint
+    # json formating
+    # use prettier
+
+    ###### for dockerfile #######
+    # dockerfile linter
+    npm i -g dockerfile-linter
+
+
+    ###### for vim #######
+    # vim linter
+    pip3 install vim-vint -U
+
+    ###### for markdown #######
+    # markdown linter
     npm install -g markdownlint
     npm install -g markdownlint-cli
     npm install -g alex
     #gem install mdl
-    npm install -g jsonlint
     npm install -g write-good
     npm install -g textlint
-    pip install yamllint
+
+    ###### for sql #######
+    # sql linter
+    pip3 install sqlint
+    # sql formating
+    pip3 install sqlformat
+
 }
 
 # for deoplete
@@ -80,7 +124,6 @@ function install_deoplete(){
     pip3 install pynvim
     git clone --depth=1 https://github.com/Shougo/deoplete.nvim.git
     git clone --depth=1 https://github.com/roxma/nvim-yarp.git
-    # java lsp
     git clone --depth=1 https://github.com/roxma/vim-hug-neovim-rpc.git
 
 
@@ -156,6 +199,55 @@ function install_coc() {
     # css, less, scss
     # with css lsp
     vim -c "CocInstall -sync coc-css | q"
+
+    # javascript
+    # with Tsserver language server
+    vim -c "CocInstall -sync coc-tsserver | q"
+
+    # vue
+    # with vue-language-server
+    npm install vue-language-server -g
+    vim -c "CocInstall -sync coc-vetur | q"
+
+    # yaml
+    # with yaml lsp
+    # yaml-language-server, not work for completion
+    vim -c "CocInstall -sync coc-yaml | q"
+
+    # json
+    # with json lsp, vscode-json-languageservice
+    vim -c "CocInstall -sync coc-json | q"
+
+    # dockerfile
+    # dockerfile lsp
+    npm install -g dockerfile-language-server-nodejs
+    vim -c "CocInstall -sync coc-docker | q"
+
+    # markdown, vim
+    # markdown lsp, not work
+    GO111MODULE=off go get github.com/mattn/efm-langserver
+
+    # xml
+    # with xml lsp, not work
+    vim -c "CocInstall -sync coc-xml | q"
+
+    # vim
+    # with lsp
+    vim -c "CocInstall -sync coc-vimlsp | q"
+
+    # git
+    vim -c "CocInstall -sync coc-git | q"
+
+    # shell
+    # shell lsp
+    npm i -g bash-language-server
+
+    # emoji, only work in markdown
+    vim -c "CocInstall -sync coc-emoji | q"
+
+    # tabnine, not work
+    # vim -c "CocInstall -sync coc-tabnine | q"
+
 
     # vim -c "CocInstall -sync coc-phpls coc-python coc-go coc-json coc-html coc-css coc-tsserver coc-vetur coc-yaml coc-docker coc-git coc-xml coc-highlight coc-snippets coc-lists coc-vimlsp coc-tabnine coc-marketplace coc-eslint coc-prettier coc-calc coc-stylelint coc-todolist coc-bookmark coc-webpack coc-ultisnips coc-sh coc-sql coc-lua coc-eomji coc-markdownlint coc-syntax coc-clock coc-ccls| q"
 }

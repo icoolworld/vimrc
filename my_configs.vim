@@ -33,19 +33,27 @@ let g:ale_php_phpcs_options = '-n'
 " let g:ale_python_isort_options = '--multi-line=3 --trailing-comma'
 let g:ale_python_flake8_options = '--ignore=E501,W291,N806,F405'
 
+" sql formater
+let g:ale_sql_sqlformat_options = ' -k upper --indent_columns -s  -r'
+
+
 let g:ale_linters = {
 \   'go': ['gobuild', 'govet', 'golint', 'staticcheck'],
 \   'php': ['php', 'phpcs'],
 \   'python': ['flake8'],
-\   'javascript': ['eslint'],
-\   'vue': ['eslint', 'vls'],
+\   'javascript': ['tsserver', 'eslint'],
+\   'vue': ['vls', 'tsserver'],
 \   'css': ['stylelint'],
 \   'less': ['stylelint'],
 \   'html': ['htmlhint'],
 \   'json': ['jsonlint'],
 \   'text': ['textlint'],
-\   'markdown': ['alex', 'markdownlint', 'mdl'],
-\   'yaml': ['yamllint']
+\   'markdown': ['markdownlint', 'mdl'],
+\   'yaml': ['yamllint'],
+\   'dockerfile': ['dockerfile_lint'],
+\   'xml': ['xmllint'],
+\   'vim': ['vint'],
+\   'sh': ['shellcheck', 'language_server']
 \}
 
 let g:ale_fixers = {
@@ -54,7 +62,7 @@ let g:ale_fixers = {
 \   'php': ['php_cs_fixer'],
 \   'python': ['black', 'isort'],
 \   'javascript': ['prettier', 'importjs'],
-\   'vue': ['prettier', 'eslint'],
+\   'vue': ['prettier'],
 \   'css': ['prettier'],
 \   'less': ['prettier'],
 \   'scss': ['prettier'],
@@ -63,7 +71,9 @@ let g:ale_fixers = {
 \   'json': ['prettier'],
 \   'text': ['textlint'],
 \   'markdown': ['prettier'],
-\   'yaml': ['prettier']
+\   'yaml': ['prettier'],
+\   'xml': ['xmllint'],
+\   'sql': ['sqlformat']
 \}
 
 set tags=tags;,ctags;,.tags;,.ctags
@@ -235,8 +245,8 @@ omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
 " Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
+" nmap <silent> <C-d> <Plug>(coc-range-select)
+" xmap <silent> <C-d> <Plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
