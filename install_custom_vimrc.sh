@@ -1,10 +1,10 @@
 #!/bin/sh
 
-set -e
 cd ~/.vim_runtime/
 
 # for ale
 function install_linter_formater() {
+    echo "install linter and formater"
 
     ###### for python #######
 
@@ -161,6 +161,7 @@ function install_deoplete() {
 
 # for coc
 function install_coc() {
+    echo "install coc"
     mkdir -p ~/.vim/
     cp coc-settings.json ~/.vim/
 
@@ -258,6 +259,7 @@ function install_coc() {
 }
 
 function install_vim_go() {
+    echo "install vim-go"
     vim -E --not-a-term -c "GoInstallBinaries" -c q
 }
 
