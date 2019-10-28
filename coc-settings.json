@@ -41,9 +41,5 @@
     }
   },
   "css.enable": true,
-  "snippets.ultisnips.directories": [
-    "UltiSnips",
-    "gosnippets/UltiSnips"
-  ],
-  "git.enableGutters": true
+  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"]
 }
