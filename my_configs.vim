@@ -1,10 +1,21 @@
+
+" nofoldenable
 set foldlevel=999
 " set nofoldenable
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => ack.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep -Q'
+endif
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => lightline.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set noshowmode
+
 " colorscheme could be powerline | wombat | jellybeans | solarized dark | solarized light etc...
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -13,13 +24,25 @@ let g:lightline = {
       \             [ 'gitbranch', 'readonly', 'filename', 'modified', 'charvaluehex'] ],
       \   'right': [ [ 'lineinfo' ],
       \            [ 'percent' ],
-      \            [ 'fileformat', 'fileencoding', 'filetype' ],[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]]},
+      \            [ 'fileformat', 'fileencoding', 'filetype' ],
+      \            [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]]
+      \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head'
       \ },
       \ 'component': {
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
       \   'charvaluehex': '0x%B'
-      \ }
+      \ },
+      \ 'component_visible_condition': {
+      \   'readonly': '(&filetype!="help"&& &readonly)',
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ 'separator': { 'left': ' ', 'right': ' ' },
+      \ 'subseparator': { 'left': ' ', 'right': ' ' }
       \ }
 let g:lightline.component_expand = {
       \  'linter_checking': 'lightline#ale#checking',
@@ -34,12 +57,6 @@ let g:lightline.component_type = {
       \     'linter_errors': 'error',
       \     'linter_ok': 'left',
       \ }
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-multiple-cursors
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:multi_cursor_next_key="\<C-n>"
 
 
 """""""""""""""""""""""""""""""""""""
