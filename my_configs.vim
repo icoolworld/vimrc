@@ -1,15 +1,56 @@
- """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- " => vim-multiple-cursors
- """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set foldlevel=999
+" set nofoldenable
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => lightline.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set noshowmode
+" colorscheme could be powerline | wombat | jellybeans | solarized dark | solarized light etc...
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified', 'charvaluehex'] ],
+      \   'right': [ [ 'lineinfo' ],
+      \            [ 'percent' ],
+      \            [ 'fileformat', 'fileencoding', 'filetype' ],[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]]},
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ 'component': {
+      \   'charvaluehex': '0x%B'
+      \ }
+      \ }
+let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+
+let g:lightline.component_type = {
+      \     'linter_checking': 'left',
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \     'linter_ok': 'left',
+      \ }
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-multiple-cursors
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:multi_cursor_next_key="\<C-n>"
 
 
- """""""""""""""""""""""""""""""""""""
- " =>ale linter,formater
- """""""""""""""""""""""""""""""""""""
-
+"""""""""""""""""""""""""""""""""""""
+" =>ale linter,formater
+"""""""""""""""""""""""""""""""""""""
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_enter = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+
 let g:ale_completion_tsserver_autoimport = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
@@ -18,7 +59,10 @@ let g:ale_echo_msg_warning_str = 'WARNING'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_list_window_size = 10
 let b:ale_warn_about_trailing_whitespace = 0
-let g:ale_open_list = 1
+
+" map to moving to between error
+nmap <silent> [e <Plug>(ale_previous_wrap)
+nmap <silent> ]e <Plug>(ale_next_wrap)
 
 " Run both javascript and vue linters for vue files.
 let g:ale_linter_aliases = {
@@ -35,7 +79,6 @@ let g:ale_python_flake8_options = '--ignore=E501,W291,N806,F405'
 
 " sql formater
 let g:ale_sql_sqlformat_options = ' -k upper --indent_columns -s  -r'
-
 
 let g:ale_linters = {
 \   'go': ['gobuild', 'govet', 'golint', 'staticcheck'],
@@ -81,16 +124,11 @@ set tags=tags;,ctags;,.tags;,.ctags
 set nu
 set rnu
 
-" php block docs
-" PHP documenter script bound to Control-P
-autocmd FileType php inoremap <C-p> <ESC>:call PhpDocSingle()<CR>i
-autocmd FileType php nnoremap <C-p> :call PhpDocSingle()<CR>
-autocmd FileType php vnoremap <C-p> :call PhpDocRange()<CR>
 
+"""""""""""""""""""""""""""""""""""""
+" => deoplete.nvim
+""""""""""""""""""""""""""""""""""""""
 
- """""""""""""""""""""""""""""""""""""
- " => deoplete.nvim
- """"""""""""""""""""""""""""""""""""""
 "let g:deoplete#enable_at_startup = 0
 
 "" php auto complete
@@ -146,9 +184,9 @@ autocmd FileType php vnoremap <C-p> :call PhpDocRange()<CR>
 
 
 
- """""""""""""""""""""""""""""""""""""
- " => coc.nvim
- """"""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""
+" => coc.nvim
+""""""""""""""""""""""""""""""""""""""
 
 " if hidden is not set, TextEdit might fail.
 set hidden

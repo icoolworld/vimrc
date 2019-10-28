@@ -41,5 +41,7 @@
     }
   },
   "css.enable": true,
-  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"]
+  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
+  "snippets.priority": 90,
+  "coc.source.word.priority": 80
 }
