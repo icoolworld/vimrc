@@ -1,5 +1,6 @@
 {
   "coc.preferences.diagnostic.displayByAle": true,
+  "suggest.noselect": false,
   "phpls.enable": true,
   "python.linting.enabled": false,
   "python.sortImports.args": ["-rc"],
@@ -39,5 +40,10 @@
       "ignoredRootPaths": ["~"]
     }
   },
-  "css.enable": true
+  "css.enable": true,
+  "snippets.ultisnips.directories": [
+    "UltiSnips",
+    "gosnippets/UltiSnips"
+  ],
+  "git.enableGutters": true
 }

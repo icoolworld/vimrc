@@ -112,10 +112,9 @@ function install_linter_formater() {
 
     ###### for sh/bash/mksh #######
     # sh/bash/mksh formating
-    GO111MODULE=on cd $(mktemp -d)
-    go mod init tmp
+    # GO111MODULE=on cd $(mktemp -d)
+    # go mod init tmp
     go get mvdan.cc/sh/cmd/shfmt
-
 }
 
 # for deoplete
@@ -232,7 +231,7 @@ function install_coc() {
     GO111MODULE=off go get github.com/mattn/efm-langserver
 
     # xml
-    # with xml lsp, not work
+    # with xml lsp
     vim -c "CocInstall -sync coc-xml | q"
 
     # vim
@@ -251,6 +250,9 @@ function install_coc() {
 
     # tabnine, not work
     # vim -c "CocInstall -sync coc-tabnine | q"
+
+    # other completion source
+    vim -c "CocInstall -sync coc-dictionary coc-tag coc-word coc-syntax coc-git coc-lists | q"
 
     # vim -c "CocInstall -sync coc-phpls coc-python coc-go coc-json coc-html coc-css coc-tsserver coc-vetur coc-yaml coc-docker coc-git coc-xml coc-highlight coc-snippets coc-lists coc-vimlsp coc-tabnine coc-marketplace coc-eslint coc-prettier coc-calc coc-stylelint coc-todolist coc-bookmark coc-webpack coc-ultisnips coc-sh coc-sql coc-lua coc-eomji coc-markdownlint coc-syntax coc-clock coc-ccls| q"
 }
