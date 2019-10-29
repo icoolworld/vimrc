@@ -1,7 +1,22 @@
 
-" nofoldenable
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => basic, highlight column line, foldlevel etc...
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" set colorcolumn=81
+" highlight ColorColumn ctermbg=grey ctermfg=white guibg=lightgrey
+
+" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+highlight OverLength ctermbg=grey ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
+" set cursorline
+" set cursorcolumn
+" highlight CursorColumn ctermbg=gray ctermfg=white guibg=#592929
+
 set foldlevel=999
 " set nofoldenable
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ack.vim
@@ -9,6 +24,7 @@ set foldlevel=999
 if executable('ag')
   let g:ackprg = 'ag --vimgrep -Q'
 endif
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

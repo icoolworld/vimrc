@@ -263,6 +263,12 @@ function install_vim_go() {
     vim -E --not-a-term -c "GoInstallBinaries" -c q
 }
 
+function update_plugins() {
+    echo "update plugins"
+    rm -rf ~/.vim_runtime/my_plugins/ale/
+    git clone --depth=1 https://github.com/dense-analysis/ale.git ~/.vim_runtime/my_plugins/ale
+}
+
 install_linter_formater
 install_vim_go
 # install_deoplete
