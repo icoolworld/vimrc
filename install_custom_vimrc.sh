@@ -273,5 +273,6 @@ install_linter_formater
 install_vim_go
 # install_deoplete
 install_coc
+update_plugins
 
 echo "Installed the Custom Vim configuration successfully! Enjoy :-)"
