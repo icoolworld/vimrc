@@ -173,59 +173,59 @@ function install_coc() {
     # php
     # php lsp
     npm i intelephense -g
-    vim -c "CocInstall -sync coc-phpls coc-python | q"
+    vim --not-a-term -c "CocInstall -sync coc-phpls coc-python | q"
 
     # python
     # python lsp
     pip3 install 'python-language-server[all]' -U
-    vim -c "CocInstall -sync coc-python | q"
+    vim --not-a-term -c "CocInstall -sync coc-python | q"
 
     # golang
     # golang lsp
     GO111MODULE=on go get golang.org/x/tools/gopls@latest
-    vim -c "CocInstall -sync coc-go | q"
+    vim --not-a-term -c "CocInstall -sync coc-go | q"
 
     # java
     # java lsp
     # @see https://github.com/eclipse/eclipse.jdt.ls
-    vim -c "CocInstall -sync coc-java | q"
+    vim --not-a-term -c "CocInstall -sync coc-java | q"
 
     # html
     # with html lsp
-    vim -c "CocInstall -sync coc-html | q"
+    vim --not-a-term -c "CocInstall -sync coc-html | q"
 
     # css, less, scss
     # with css lsp
-    vim -c "CocInstall -sync coc-css | q"
+    vim --not-a-term -c "CocInstall -sync coc-css | q"
 
     # javascript
     # with Tsserver language server
-    vim -c "CocInstall -sync coc-tsserver | q"
+    vim --not-a-term -c "CocInstall -sync coc-tsserver | q"
 
     # jest
     # @see https://jestjs.io/
     yarn global add jest
-    vim -c "CocInstall -sync coc-snippets | q"
-    vim -c "CocInstall -sync https://github.com/andys8/vscode-jest-snippets | q"
+    vim --not-a-term -c "CocInstall -sync coc-snippets | q"
+    vim --not-a-term -c "CocInstall -sync https://github.com/andys8/vscode-jest-snippets | q"
 
     # vue
     # with vue-language-server
     npm install vue-language-server -g
-    vim -c "CocInstall -sync coc-vetur | q"
+    vim --not-a-term -c "CocInstall -sync coc-vetur | q"
 
     # yaml
     # with yaml lsp
     # yaml-language-server, not work for completion
-    vim -c "CocInstall -sync coc-yaml | q"
+    vim --not-a-term -c "CocInstall -sync coc-yaml | q"
 
     # json
     # with json lsp, vscode-json-languageservice
-    vim -c "CocInstall -sync coc-json | q"
+    vim --not-a-term -c "CocInstall -sync coc-json | q"
 
     # dockerfile
     # dockerfile lsp
     npm install -g dockerfile-language-server-nodejs
-    vim -c "CocInstall -sync coc-docker | q"
+    vim --not-a-term -c "CocInstall -sync coc-docker | q"
 
     # markdown, vim
     # markdown lsp, not work
@@ -233,29 +233,29 @@ function install_coc() {
 
     # xml
     # with xml lsp
-    vim -c "CocInstall -sync coc-xml | q"
+    vim --not-a-term -c "CocInstall -sync coc-xml | q"
 
     # vim
     # with lsp
-    vim -c "CocInstall -sync coc-vimlsp | q"
+    vim --not-a-term -c "CocInstall -sync coc-vimlsp | q"
 
     # git
-    vim -c "CocInstall -sync coc-git | q"
+    vim --not-a-term -c "CocInstall -sync coc-git | q"
 
     # shell
     # shell lsp
     npm i -g bash-language-server
 
     # emoji, only work in markdown
-    vim -c "CocInstall -sync coc-emoji | q"
+    vim --not-a-term -c "CocInstall -sync coc-emoji | q"
 
     # tabnine, not work
-    # vim -c "CocInstall -sync coc-tabnine | q"
+    # vim --not-a-term -c "CocInstall -sync coc-tabnine | q"
 
     # other completion source
-    vim -c "CocInstall -sync coc-dictionary coc-tag coc-word coc-syntax coc-git coc-lists | q"
+    vim --not-a-term -c "CocInstall -sync coc-dictionary coc-tag coc-word coc-syntax coc-git coc-lists | q"
 
-    # vim -c "CocInstall -sync coc-phpls coc-python coc-go coc-json coc-html coc-css coc-tsserver coc-vetur coc-yaml coc-docker coc-git coc-xml coc-highlight coc-snippets coc-lists coc-vimlsp coc-tabnine coc-marketplace coc-eslint coc-prettier coc-calc coc-stylelint coc-todolist coc-bookmark coc-webpack coc-ultisnips coc-sh coc-sql coc-lua coc-eomji coc-markdownlint coc-syntax coc-clock coc-ccls| q"
+    # vim --not-a-term -c "CocInstall -sync coc-phpls coc-python coc-go coc-json coc-html coc-css coc-tsserver coc-vetur coc-yaml coc-docker coc-git coc-xml coc-highlight coc-snippets coc-lists coc-vimlsp coc-tabnine coc-marketplace coc-eslint coc-prettier coc-calc coc-stylelint coc-todolist coc-bookmark coc-webpack coc-ultisnips coc-sh coc-sql coc-lua coc-eomji coc-markdownlint coc-syntax coc-clock coc-ccls| q"
 }
 
 function install_vim_go() {
