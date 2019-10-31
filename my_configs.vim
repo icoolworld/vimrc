@@ -2,6 +2,9 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => basic, highlight column line, foldlevel etc...
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" make sure a copy of the file is made and the original one overwritten on save
+" fix system's file watching
+set backupcopy=yes
 
 " set colorcolumn=81
 " highlight ColorColumn ctermbg=grey ctermfg=white guibg=lightgrey
@@ -137,7 +140,7 @@ let g:ale_fixers = {
 \   'go': ['gofmt', 'goimports'],
 \   'php': ['php_cs_fixer'],
 \   'python': ['black', 'isort'],
-\   'javascript': ['prettier', 'importjs'],
+\   'javascript': ['prettier'],
 \   'vue': ['prettier'],
 \   'css': ['prettier'],
 \   'less': ['prettier'],
