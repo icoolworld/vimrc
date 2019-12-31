@@ -183,7 +183,7 @@ function install_coc() {
     # golang
     # golang lsp
     GO111MODULE=on go get golang.org/x/tools/gopls@latest
-    vim --not-a-term -c "CocInstall -sync coc-go | q"
+    #vim --not-a-term -c "CocInstall -sync coc-go | q"
 
     # java
     # java lsp
