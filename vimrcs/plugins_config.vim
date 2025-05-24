@@ -1,8 +1,14 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Important:
-"       This requries that you install https://github.com/amix/vimrc !
+"       This requires that you install https://github.com/amix/vimrc !
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+""""""""""""""""""""""""""""""
+" => Enable native vim packages as described in the README
+""""""""""""""""""""""""""""""
+set packpath+=~/.vim_runtime
 
 
 """"""""""""""""""""""""""""""
@@ -13,6 +19,7 @@ call pathogen#infect(s:vim_runtime.'/sources_forked/{}')
 call pathogen#infect(s:vim_runtime.'/sources_non_forked/{}')
 call pathogen#infect(s:vim_runtime.'/my_plugins/{}')
 call pathogen#helptags()
+
 
 """"""""""""""""""""""""""""""
 " => bufExplorer plugin
@@ -36,8 +43,8 @@ map <leader>f :MRU<CR>
 """"""""""""""""""""""""""""""
 let g:yankstack_yank_keys = ['y', 'd']
 
-nmap <c-p> <Plug>yankstack_substitute_older_paste
-nmap <c-n> <Plug>yankstack_substitute_newer_paste
+nmap <C-p> <Plug>yankstack_substitute_older_paste
+nmap <C-n> <Plug>yankstack_substitute_newer_paste
 
 
 """"""""""""""""""""""""""""""
@@ -45,9 +52,12 @@ nmap <c-n> <Plug>yankstack_substitute_newer_paste
 """"""""""""""""""""""""""""""
 let g:ctrlp_working_path_mode = 0
 
-let g:ctrlp_map = '<c-f>'
+" Quickly find and open a file in the current working directory
+let g:ctrlp_map = '<C-f>'
 map <leader>j :CtrlP<cr>
-map <c-b> :CtrlPBuffer<cr>
+
+" Quickly find and open a buffer
+map <leader>b :CtrlPBuffer<cr>
 
 let g:ctrlp_max_height = 20
 let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
@@ -63,8 +73,9 @@ let g:user_zen_mode='a'
 """"""""""""""""""""""""""""""
 " => snipMate (beside <TAB> support <CTRL-j>)
 """"""""""""""""""""""""""""""
-ino <c-j> <c-r>=snipMate#TriggerSnippet()<cr>
-snor <c-j> <esc>i<right><c-r>=snipMate#TriggerSnippet()<cr>
+ino <C-j> <C-r>=snipMate#TriggerSnippet()<cr>
+snor <C-j> <esc>i<right><C-r>=snipMate#TriggerSnippet()<cr>
+let g:snipMate = { 'snippet_version' : 1 }
 
 
 """"""""""""""""""""""""""""""
@@ -115,10 +126,6 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
       \ 'colorscheme': 'wombat',
-      \ }
-
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ ['mode', 'paste'],
       \             ['fugitive', 'readonly', 'filename', 'modified'] ],
@@ -127,12 +134,12 @@ let g:lightline = {
       \ 'component': {
       \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \   'fugitive': '%{exists("*FugitiveHead")?FugitiveHead():""}'
       \ },
       \ 'component_visible_condition': {
       \   'readonly': '(&filetype!="help"&& &readonly)',
       \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \   'fugitive': '(exists("*FugitiveHead") && ""!=FugitiveHead())'
       \ },
       \ 'separator': { 'left': ' ', 'right': ' ' },
       \ 'subseparator': { 'left': ' ', 'right': ' ' }
@@ -148,16 +155,10 @@ nnoremap <silent> <leader>z :Goyo<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim-go
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:go_fmt_command = "goimports"
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Syntastic (syntax checker)
+" => Ale (syntax checker and linter)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_linters = {
-\   'javascript': ['jshint'],
+\   'javascript': ['eslint'],
 \   'python': ['flake8'],
 \   'go': ['go', 'golint', 'errcheck']
 \}
@@ -170,6 +171,7 @@ let g:ale_set_highlights = 0
 " Only run linting when saving the file
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
+let g:ale_virtualtext_cursor = 'disabled'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -177,3 +179,17 @@ let g:ale_lint_on_enter = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gitgutter_enabled=0
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => EditorConfig (project-specific EditorConfig rule)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Fugitive
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Copy the link to the line of a Git repository to the clipboard
+nnoremap <leader>v :.GBrowse!<CR>
+xnoremap <leader>v :GBrowse!<CR>
