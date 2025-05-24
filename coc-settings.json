@@ -1,18 +1,15 @@
 {
-  "coc.preferences.diagnostic.displayByAle": true,
+  "suggest.autoTrigger": "always",
   "suggest.noselect": false,
   "phpls.enable": true,
   "python.linting.enabled": false,
   "python.sortImports.args": ["-rc"],
   "python.sortImports.path": "isort",
   "go.enable": true,
-  "html.enable": true,
   "html.format.enable": false,
   "html.filetypes": ["html", "htm", "handlebars"],
-  "css.filetypes": ["css", "less", "wxss", "scss"],
   "css.validate": true,
   "less.validate": true,
-  "wxss.validate": true,
   "scss.validate": true,
   "tsserver.enable": true,
   "tsserver.trace.server": "verbose",
@@ -33,19 +30,58 @@
       "args": ["-c", "~/.vim_runtime/efm-langserver-config.yaml"],
       "filetypes": ["vim", "eruby", "markdown"]
     },
-    "bash": {
-      "command": "bash-language-server",
-      "args": ["start"],
-      "filetypes": ["sh"],
-      "ignoredRootPaths": ["~"]
+    "dockercompose": {
+      "command": "docker-compose-langserver",
+      "args": ["--stdio"],
+      "filetypes": ["dockercompose"],
+      "rootPatterns": [
+        ".git",
+        ".env",
+        "docker-compose.yml",
+        "compose.yml",
+        "docker-compose.yaml",
+        "compose.yaml"
+      ]
     },
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "filetypes": ["go"]
+    "sql": {
+      "module": "/usr/local/node-v22.15.0-linux-x64/lib/node_modules/sql-language-server/dist/bin/cli.js",
+      "args": ["up", "--method", "node-ipc"],
+      "filetypes": ["sql", "mysql"],
+      "settings": {
+        "sqlLanguageServer": {
+          "connections": [
+            {
+              "name": "mysql_project",
+              "adapter": "mysql",
+              "host": "127.0.0.1",
+              "port": 3306,
+              "user": "root",
+              "password": "123456",
+              "database": "sys",
+              "projectPaths": ["/data/mygit/develop/test"]
+            }
+          ],
+          "lint": {
+            "rules": {
+              "align-column-to-the-first": "error",
+              "column-new-line": "error",
+              "linebreak-after-clause-keyword": "off",
+              "reserved-word-case": ["error", "upper"],
+              "space-surrounding-operators": "error",
+              "where-clause-new-line": "error",
+              "align-where-clause-to-the-first": "error"
+            }
+          }
+        }
+      }
+    },
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {}
     }
   },
-  "css.enable": true,
   "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
   "snippets.priority": 90,
   "coc.source.word.priority": 80

@@ -40,6 +40,7 @@ function install_linter_formater() {
     # java formating
     # google-java-format
     # https://github.com/google/google-java-format/releases/download/google-java-format-1.7/google-java-format-1.7-all-deps.jar
+    # wget https://github.com/google/google-java-format/releases/download/v1.27.0/google-java-format_linux-x86-64
 
     ###### for html #######
     # html linter
@@ -117,56 +118,14 @@ function install_linter_formater() {
     go get mvdan.cc/sh/cmd/shfmt
 }
 
-# for deoplete
-function install_deoplete() {
-    cd ~/.vim_runtime/my_plugins/
-    # for vim auto complete
-    pip3 install pynvim
-    git clone --depth=1 https://github.com/Shougo/deoplete.nvim.git
-    git clone --depth=1 https://github.com/roxma/nvim-yarp.git
-    git clone --depth=1 https://github.com/roxma/vim-hug-neovim-rpc.git
-
-    # javascript auto complete
-    npm install -g tern
-    git clone --depth=1 https://github.com/carlitux/deoplete-ternjs.git
-
-    # go auto complete
-    git clone --depth=1 https://github.com/deoplete-plugins/deoplete-go.git
-    cd deoplete-go/ && make && cd ../
-
-    # php auto complete
-    git clone --depth=1 https://github.com/lvht/phpcd.vim.git
-    cd phpcd.vim/ && composer install && cd ../
-
-    # python auto complete
-    git clone --recursive https://github.com/deoplete-plugins/deoplete-jedi.git
-    cd deoplete-jedi/ && git submodule update --init && cd ../
-
-    # sql auto complete
-    git clone --depth=1 https://github.com/jjohnson338/deoplete-mssql.git
-
-    # vim auto complete
-    git clone --depth=1 https://github.com/Shougo/neco-vim.git
-
-    # zsh auto complete
-    git clone --depth=1 https://github.com/deoplete-plugins/deoplete-zsh.git
-
-    # deoplete-tabnine
-    git clone --depth=1 https://github.com/tbodt/deoplete-tabnine.git
-    cd deoplete-tabnine/ && ./install.sh && cd ../
-
-    git clone --depth=1 https://github.com/fszymanski/deoplete-emoji.git
-
-}
-
 # for coc
 function install_coc() {
     echo "install coc"
     mkdir -p ~/.vim/
     cp coc-settings.json ~/.vim/
 
-    cd ~/.vim_runtime/my_plugins/
-    curl --fail -L https://github.com/neoclide/coc.nvim/archive/release.tar.gz | tar xzfv -
+    # cd ~/.vim_runtime/my_plugins/
+    # curl --fail -L https://github.com/neoclide/coc.nvim/archive/release.tar.gz | tar xzfv -
 
     # install coc extensions , include language server support
 
@@ -178,12 +137,12 @@ function install_coc() {
     # python
     # python lsp
     pip3 install 'python-language-server[all]' -U
-    vim --not-a-term -c "CocInstall -sync coc-python | q"
+    vim --not-a-term -c "CocInstall -sync coc-pyright | q"
 
     # golang
     # golang lsp
-    GO111MODULE=on go get golang.org/x/tools/gopls@latest
-    #vim --not-a-term -c "CocInstall -sync coc-go | q"
+    go install golang.org/x/tools/gopls@latest
+    vim --not-a-term -c "CocInstall -sync coc-go | q"
 
     # java
     # java lsp
@@ -204,7 +163,7 @@ function install_coc() {
 
     # jest
     # @see https://jestjs.io/
-    yarn global add jest
+    # yarn global add jest
     vim --not-a-term -c "CocInstall -sync coc-snippets | q"
     vim --not-a-term -c "CocInstall -sync https://github.com/andys8/vscode-jest-snippets | q"
 
@@ -227,9 +186,13 @@ function install_coc() {
     npm install -g dockerfile-language-server-nodejs
     vim --not-a-term -c "CocInstall -sync coc-docker | q"
 
+    # docker-compose
+    npm i -g @microsoft/compose-language-service
+
     # markdown, vim
     # markdown lsp, not work
-    GO111MODULE=off go get github.com/mattn/efm-langserver
+    # GO111MODULE=off go get github.com/mattn/efm-langserver
+    go install github.com/mattn/efm-langserver@latest
 
     # xml
     # with xml lsp
@@ -245,15 +208,45 @@ function install_coc() {
     # shell
     # shell lsp
     npm i -g bash-language-server
+    vim --not-a-term -c "CocInstall -sync coc-sh | q"
 
     # emoji, only work in markdown
     vim --not-a-term -c "CocInstall -sync coc-emoji | q"
+
+
 
     # tabnine, not work
     # vim --not-a-term -c "CocInstall -sync coc-tabnine | q"
 
     # other completion source
     vim --not-a-term -c "CocInstall -sync coc-dictionary coc-tag coc-word coc-syntax coc-git coc-lists | q"
+
+
+    # clangd
+    apt-get install clangd-12
+    vim --not-a-term -c "CocInstall -sync coc-clangd | q"
+
+    #sql
+    npm i -g sql-language-server
+    vim --not-a-term -c "CocInstall -sync coc-sql | q"
+
+
+    # terraform
+    # wget -c https://releases.hashicorp.com/terraform-ls/0.36.4/terraform-ls_0.36.4_linux_amd64.zip
+
+    # ansible
+    npm install -g @ansible/ansible-language-server
+    # git clone git@github.com:pearofducks/ansible-vim.git
+    vim --not-a-term -c "CocInstall -sync @yaegassy/coc-ansible | q"
+
+    # :CocInstall coc-explorer
+    vim --not-a-term -c "CocInstall -sync coc-explorer | q"
+
+    # :CocInstall @yaegassy/coc-nginx
+    pip install -U nginx-language-server
+    vim --not-a-term -c "CocInstall -sync @yaegassy/coc-nginx | q"
+
+    # :CocInstall coc-snippets
 
     # vim --not-a-term -c "CocInstall -sync coc-phpls coc-python coc-go coc-json coc-html coc-css coc-tsserver coc-vetur coc-yaml coc-docker coc-git coc-xml coc-highlight coc-snippets coc-lists coc-vimlsp coc-tabnine coc-marketplace coc-eslint coc-prettier coc-calc coc-stylelint coc-todolist coc-bookmark coc-webpack coc-ultisnips coc-sh coc-sql coc-lua coc-eomji coc-markdownlint coc-syntax coc-clock coc-ccls| q"
 }
@@ -267,12 +260,14 @@ function update_plugins() {
     echo "update plugins"
     rm -rf ~/.vim_runtime/my_plugins/ale/
     git clone --depth=1 https://github.com/dense-analysis/ale.git ~/.vim_runtime/my_plugins/ale
+    git clone --depth=1 git@github.com:pearofducks/ansible-vim.git ~/.vim_runtime/my_plugins/ansible-vim
+    git clone git@github.com:neoclide/coc.nvim.git ~/.vim_runtime/my_plugins/coc.nvim && git checkout -b release origin/release
+    git clone --depth=1 git@github.com:Exafunction/windsurf.vim.git ~/.vim_runtime/my_plugins/windsurf.vim
 }
 
-install_linter_formater
-install_vim_go
-# install_deoplete
 install_coc
-update_plugins
+# install_linter_formater
+#update_plugins
+#install_vim_go
 
 echo "Installed the Custom Vim configuration successfully! Enjoy :-)"
