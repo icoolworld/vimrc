@@ -28,6 +28,7 @@ function install_linter_formater() {
     # go vet
     # go linter for style checking
     # golint
+    go install github.com/mgechev/revive@latest
 
     # golang formating
     # gofmt
@@ -36,11 +37,11 @@ function install_linter_formater() {
     ###### for java #######
     # java linter
     # javac
+    apt install checkstyle
 
     # java formating
     # google-java-format
     # https://github.com/google/google-java-format/releases/download/google-java-format-1.7/google-java-format-1.7-all-deps.jar
-    # wget https://github.com/google/google-java-format/releases/download/v1.27.0/google-java-format_linux-x86-64
 
     ###### for html #######
     # html linter
@@ -115,14 +116,15 @@ function install_linter_formater() {
     # sh/bash/mksh formating
     # GO111MODULE=on cd $(mktemp -d)
     # go mod init tmp
-    go get mvdan.cc/sh/cmd/shfmt
+    go install mvdan.cc/sh/cmd/shfmt@latest
+    apt install shellcheck
 }
 
 # for coc
 function install_coc() {
     echo "install coc"
-    mkdir -p ~/.vim/
-    cp coc-settings.json ~/.vim/
+    # mkdir -p ~/.vim/
+    # cp coc-settings.json ~/.vim/
 
     # cd ~/.vim_runtime/my_plugins/
     # curl --fail -L https://github.com/neoclide/coc.nvim/archive/release.tar.gz | tar xzfv -
@@ -142,6 +144,7 @@ function install_coc() {
     # golang
     # golang lsp
     go install golang.org/x/tools/gopls@latest
+    go install golang.org/x/tools/cmd/goimports@latest
     vim --not-a-term -c "CocInstall -sync coc-go | q"
 
     # java
@@ -192,7 +195,7 @@ function install_coc() {
     # markdown, vim
     # markdown lsp, not work
     # GO111MODULE=off go get github.com/mattn/efm-langserver
-    go install github.com/mattn/efm-langserver@latest
+    go install github.com/mattn/efm-langserver
 
     # xml
     # with xml lsp
@@ -228,7 +231,6 @@ function install_coc() {
 
     #sql
     npm i -g sql-language-server
-    vim --not-a-term -c "CocInstall -sync coc-sql | q"
 
 
     # terraform

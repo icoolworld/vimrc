@@ -218,15 +218,16 @@ let g:ale_python_flake8_options = '--ignore=E501,W291,N806,F405'
 let g:ale_sql_sqlformat_options = ' -k upper --indent_columns -s  -r'
 
 let g:ale_linters = {
-\   'go': ['gobuild', 'govet', 'golint', 'staticcheck'],
+\   'go': ['gobuild',  'revive','govet', 'golint', 'staticcheck'],
 \   'php': ['php', 'phpcs'],
-\   'python': ['flake8'],
+\   'java': ['javac', 'checkstyle'],
+\   'python': ['pylint', 'flake8', 'pycodestyle'],
 \   'javascript': ['tsserver', 'eslint'],
 \   'vue': ['vls', 'tsserver'],
 \   'css': ['stylelint'],
 \   'less': ['stylelint'],
 \   'html': ['htmlhint'],
-\   'json': ['jsonlint'],
+\   'json': ['jsonlint','jq'],
 \   'text': ['textlint'],
 \   'markdown': ['markdownlint', 'mdl'],
 \   'yaml': ['yamllint'],
@@ -243,7 +244,7 @@ let g:ale_fixers = {
 \   'go': ['gofmt', 'goimports'],
 \   'java': ['google_java_format'],
 \   'php': ['php_cs_fixer'],
-\   'python': ['black', 'isort'],
+\   'python': ['black','autoimport', 'isort', 'autopep8', 'yapf'],
 \   'javascript': ['prettier'],
 \   'vue': ['prettier'],
 \   'css': ['prettier'],

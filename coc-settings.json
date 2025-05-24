@@ -1,6 +1,10 @@
 {
   "suggest.autoTrigger": "always",
   "suggest.noselect": false,
+  "java.enabled": true,
+  "java.saveActions.organizeImports": true,
+  "java.import.maven.enabled": true,
+  "java.import.gradle.enabled": true,
   "phpls.enable": true,
   "python.linting.enabled": false,
   "python.sortImports.args": ["-rc"],
@@ -28,7 +32,7 @@
     "efm": {
       "command": "efm-langserver",
       "args": ["-c", "~/.vim_runtime/efm-langserver-config.yaml"],
-      "filetypes": ["vim", "eruby", "markdown"]
+      "filetypes": ["eruby"]
     },
     "dockercompose": {
       "command": "docker-compose-langserver",
