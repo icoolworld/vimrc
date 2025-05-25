@@ -128,7 +128,38 @@ imap <C-x>   <Cmd>call codeium#Clear()<CR>
 
 """vimspector
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+" packadd! vimspector
 
+" Key	Mapping	Function
+" F5	<Plug>VimspectorContinue	When debugging, continue. Otherwise start debugging.
+" Shift F5	<Plug>VimspectorStop	Stop debugging.
+" Ctrl Shift F5	<Plug>VimspectorRestart	Restart debugging with the same configuration.
+" F6	<Plug>VimspectorPause	Pause debuggee.
+" F8	<Plug>VimspectorJumpToNextBreakpoint	Jump to next breakpoint in the current file.
+" Shift F8	<Plug>VimspectorJumpToPreviousBreakpoint	Jump to previous breakpoint in the current file.
+" F9	<Plug>VimspectorToggleBreakpoint	Toggle line breakpoint on the current line.
+" Shift F9	<Plug>VimspectorAddFunctionBreakpoint	Add a function breakpoint for the expression under cursor
+" F10	<Plug>VimspectorStepOver	Step Over
+" Ctrl F10	<Plug>VimspectorRunToCursor	Run to cursor*
+" F11	<Plug>VimspectorStepInto	Step Into
+" Shift F11	<Plug>VimspectorStepOut	Step out of current function scope
+" Alt 8	<Plug>VimspectorDisassemble	Show disassembly
+
+
+" let g:vimspector_enable_mappings = 'HUMAN'
+
+" Key	Mapping	Function
+" F5	<Plug>VimspectorContinue	When debugging, continue. Otherwise start debugging.
+" F3	<Plug>VimspectorStop	Stop debugging.
+" F4	<Plug>VimspectorRestart	Restart debugging with the same configuration.
+" F6	<Plug>VimspectorPause	Pause debuggee.
+" F9	<Plug>VimspectorToggleBreakpoint	Toggle line breakpoint on the current line.
+" <leader>F9	<Plug>VimspectorToggleConditionalBreakpoint	Toggle conditional line breakpoint or logpoint on the current line.
+" F8	<Plug>VimspectorAddFunctionBreakpoint	Add a function breakpoint for the expression under cursor
+" <leader>F8	<Plug>VimspectorRunToCursor	Run to Cursor
+" F10	<Plug>VimspectorStepOver	Step Over
+" F11	<Plug>VimspectorStepInto	Step Into
+" F12	<Plug>VimspectorStepOut	Step out of current function scope
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -264,65 +295,6 @@ let g:ale_fixers = {
 set tags=tags;,ctags;,.tags;,.ctags
 set nu
 set rnu
-
-
-"""""""""""""""""""""""""""""""""""""
-" => deoplete.nvim
-""""""""""""""""""""""""""""""""""""""
-
-"let g:deoplete#enable_at_startup = 0
-
-"" php auto complete
-"" @see https://github.com/lvht/phpcd.vim
-"let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
-"let g:deoplete#ignore_sources.php = ['omni']
-""let g:phpcd_autoload_path = 'path/to/autoload_file.php'
-""let g:phpcd_php_cli_executable = 'php'
-
-
-"" Javascript auto complete
-"" @see https://github.com/carlitux/deoplete-ternjs
-"let g:deoplete#sources#ternjs#filetypes = [
-"\ 'js',
-"\ 'jsx',
-"\ 'vue'
-"\ ]
-"let g:tern#command = ["tern"]
-"let g:tern#arguments = ["--persistent"]
-
-
-"" go auto complete
-"" @see https://github.com/deoplete-plugins/deoplete-go
-"let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-"let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-
-
-"" python auto complete
-"" @see https://github.com/deoplete-plugins/deoplete-go
-"let g:python_host_prog = '/usr/bin/python'
-"let g:python3_host_prog = '/usr/bin/python3'
-
-
-"" sql auto complete
-"" @see https://github.com/jjohnson338/deoplete-mssql
-"let g:deoplete#sources#mssql#server='mysql'
-"let g:deoplete#sources#mssql#user='root'
-"let g:deoplete#sources#mssql#password='123456'
-"let g:deoplete#sources#mssql#db='mysql'
-
-
-"" deoplete-tabnine
-"call deoplete#custom#var('tabnine', {
-"\ 'line_limit': 500,
-"\ 'max_num_results': 20,
-"\ })
-
-"" deoplete-emoji
-"call deoplete#custom#source('emoji', 'filetypes', ['php', 'markdown', 'text', 'html'])
-"call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
-
-
-
 
 
 """""""""""""""""""""""""""""""""""""

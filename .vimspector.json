@@ -1,0 +1,54 @@
+{
+  "configurations": {
+    "run": {
+      "adapter": "delve",
+      "filetypes": ["go"],
+      "variables": {
+        "configFile": "${workspaceFolder}/configs/config.toml",
+        "i18n": "${workspaceFolder}/configs/error/"
+      },
+      "configuration": {
+        "request": "launch",
+        "program": "${workspaceFolder}/cmd/",
+        "mode": "debug",
+        "args": [
+          "--conf",
+          "${configFile}",
+          "--cformat",
+          "toml",
+          "--i18n",
+          "${i18n}"
+        ],
+        "cwd": "${workspaceFolder}",
+        "stopOnEntry": false,
+        "env": {
+          "GO_ENV": "development",
+          "LOG_DIR": "${workspaceFolder}/logs"
+        },
+        "showLog": true,
+        "trace": "verbose"
+      }
+    },
+    "test": {
+      "adapter": "delve",
+      "filetypes": ["go"],
+      "variables": {
+        "testFlags": "-test.v"
+      },
+      "configuration": {
+        "request": "launch",
+        "program": "${fileDirname}",
+        "mode": "test",
+        "args": ["${testFlags}"],
+        "cwd": "${workspaceFolder}",
+        "stopOnEntry": false,
+        "env": {
+          "GO_ENV": "test",
+          "LOG_DIR": "${workspaceFolder}/logs"
+        },
+        "showLog": true,
+        "trace": "verbose"
+      }
+    }
+  }
+}
