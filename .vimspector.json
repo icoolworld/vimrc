@@ -5,7 +5,8 @@
       "filetypes": ["go"],
       "variables": {
         "configFile": "${workspaceFolder}/configs/config.toml",
-        "i18n": "${workspaceFolder}/configs/error/"
+        "i18n": "${workspaceFolder}/configs/errors/",
+        "dlvFlags": "--check-go-version=false"
       },
       "configuration": {
         "request": "launch",
@@ -20,7 +21,7 @@
           "${i18n}"
         ],
         "cwd": "${workspaceFolder}",
-        "stopOnEntry": false,
+        "stopOnEntry": true,
         "env": {
           "GO_ENV": "development",
           "LOG_DIR": "${workspaceFolder}/logs"
@@ -33,7 +34,8 @@
       "adapter": "delve",
       "filetypes": ["go"],
       "variables": {
-        "testFlags": "-test.v"
+        "testFlags": "-test.v",
+        "dlvFlags": "--check-go-version=false"
       },
       "configuration": {
         "request": "launch",
